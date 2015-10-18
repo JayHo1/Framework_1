@@ -1,0 +1,225 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,200);
+
+body {
+	background: #EAEDF2;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul {
+	padding: 0;
+}
+
+ul li {
+	list-style-type: none;
+}
+
+p {
+	margin: 0;
+}
+
+hr {
+	color: black;
+}
+.home {
+	position: relative;
+	top: 100px;
+	text-align: center;
+}
+
+.home-profile-pic {
+	margin-right: 30px;
+}
+
+.home-profile-pic-1 img {
+	margin-top: 10px;
+	width: 50%;
+	height: auto;
+}
+
+.home-profile-pic-1 ul {
+	margin-top: 50px;
+}
+
+.home-profile-pic-1 ul li {
+	float: left;
+	padding: 3px 0 3px 0;
+}
+
+.home-profile-pic-1 {
+	height: 310px;
+	margin-bottom: 50px;
+	border-radius: 3px;
+	background: #81D4FA;
+	box-shadow: 3px 4px 5px #DBDBDB;
+}
+
+.home-profile-pic-2 {
+	padding: 0;
+	height: 410px;
+	border-radius: 2px;
+	background-color: white;
+	box-shadow: 3px 4px 5px #DBDBDB;
+}
+
+.navigation-i18 {
+	background-color: #757575;
+}
+
+.navigation-i18 button {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.navigation-title {
+	background-color: #EF6C00;
+	font-family: 'Raleway';
+	color: white;
+	font-weight: 300;
+	box-shadow: 1px 5px 5px #BDBDBD;
+}
+
+.navigation-title h3 {
+	padding: 5 0 5 0;
+	margin: 0;
+}
+
+.navigation-elem img{
+	transition: transform 1s, opacity 1s;
+	display: none;
+}
+
+.hvr-rectangle-in {
+	padding: 10px 0 10px 0;
+	border-bottom: 1px solid #01579B;
+	width: 100%;
+	height: 50px;
+	font-family: 'Raleway';
+}
+
+.hvr-rectangle-in a {
+	color: white;
+}
+
+.hvr-rectangle-in:hover > .hide-nav{
+	display: none;
+}
+
+.hvr-rectangle-in:hover > a > img {
+	display: inline;
+}
+
+.mailbox-f img {
+	width: 50%;
+	height: auto;
+}
+
+.home-profile-mailbox {
+	height: 510px;
+	background: white;
+	margin-right: 30px;
+	padding: 0;
+	border-radius: 3px;
+	box-shadow: 4px 3px 7px #B0BEC5;
+	-webkit-animation-delay: 0.2s;
+}
+
+.mailbox-nav {
+	background: #37474F;
+	height: 50px;
+}
+
+.mailbox-nav ul {
+	margin-left: 25px;
+}
+
+.home-profile-mailbox .f2{
+	padding-right: 9px;
+}
+
+.nav>li>a {
+	transition: ease 1s;
+}
+
+.nav>li>a:focus, 
+.nav>li>a:hover {
+	background-color: #263238;
+}
+
+.mailbox-f a {
+	color: white;
+}
+
+.mailbox-title {
+	background: #263238;
+
+}
+
+.mailbox-title p {
+	font-family: 'Lato';
+	font-weight: 500;
+	color: white;
+	font-size: 20px;
+}
+
+.home-profile-schedule {
+	height: 140px;
+	margin-bottom: 50px;
+	text-align: center;
+	-webkit-animation-delay: 0.3s;
+	box-shadow: 4px 3px 7px #B0BEC5;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+#clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+}
+
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+
+.clockdiv-elem {
+	width: 100px;
+	float: left;
+}
+
+.home-profile-stars {
+	height: 140px;
+	margin-bottom: 50px;
+	-webkit-animation-delay: 0.5s;
+	box-shadow: 4px 3px 7px #B0BEC5;
+}
+
+.home-profile-other {
+	height: 130px;
+}
+
+.home-profile-not {
+	height: 210px;
+	width: 710px;
+	margin-top: 50px;
+}
+

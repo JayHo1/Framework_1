@@ -1,0 +1,154 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,700,600);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,300,900);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,900);
+
+body {
+	background: #EDEDED;
+}
+
+hr {
+	border-color: #BDBDBD;
+}
+
+h3, h5 {
+	font-family: 'Source Sans Pro';
+	font-weight: 600;
+}
+
+::-webkit-input-placeholder {
+   font-family: 'Source Sans Pro';
+   font-weight: 300;
+}
+
+/***	Header	 ***/
+
+.header-title h1 {
+	font-family: 'Open Sans';
+	font-weight: 400;
+}
+
+.bg-top-header {
+	height: 70px;
+	background: #2980B9;
+}
+
+.bg-bottom-header {
+	height: 45px;
+	background: #274C70;
+}
+
+.header-title h1 {
+	font-size: 30px;
+	color: white;
+}
+
+#searchbox {
+	margin-top: 16px;
+	position: relative;
+	left: 150px;
+}
+
+input:focus {
+	outline: 0;
+}
+
+input[type=text] {
+	border: none;
+	border-radius: 3px;
+}
+
+#searchbox button[type=submit] {
+	background-color: #1ABC9C;
+	border: none;
+	border-radius: 3px;
+	height: 40px;
+	width: 80px;
+	margin-left: 20px;
+	padding: 1px 0 0 0;
+}
+
+button:focus {
+	outline: 0;
+}
+
+#searchbox button[type=submit]:hover {
+	background-color: #26A69A;
+}
+
+/***	Body-Topic	 ***/
+
+.body-content {
+	margin-top: 30px;
+}
+
+.input-container {
+	border: 1px solid #BDBDBD;
+	border-radius: 4px;
+}
+
+.input-container input[type=text] {
+	background-color: #EDEDED;
+	width: 550px;
+	height: 50px;
+	border-right: 1px solid #BDBDBD;
+}
+
+select:focus {
+	outline: 0;
+}
+
+select {
+	border: none;
+	background: #EDEDED;
+}
+
+.select-items {
+	margin-left: 50px;
+}
+
+#input-text {
+	-webkit-animation: flipInX 1s linear;
+	margin-top: 30px;
+	display: none;
+}
+
+textarea:focus {
+	outline: 0;
+}
+
+textarea {
+	resize: none;
+	border: 1px solid #BDBDBD;
+	border-radius: 2px;
+}
+
+#topic-submit {
+	-webkit-animation: flipInX 1s linear;
+	margin-top: 20px;
+	display: none;
+}
+
+#topic-submit button[type=submit]{
+	width: 220px;
+	height: 40px;
+	border: none;
+	border-radius: 3px;
+	background-color: #904C09;
+	color: white;}
+
+#topic-submit button:hover {
+	background-color: #994C00;
+}
+
+.topic-submit-button span{
+	display: inline;
+	margin-left: 30px;
+}
+/***	Body-aside	 ***/
+
+.forum-category {
+	margin-top: 30px;
+}
+
+/***	Header	 ***/
+/***	Header	 ***/

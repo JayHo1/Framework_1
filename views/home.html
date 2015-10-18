@@ -1,0 +1,115 @@
+<!DOCTYPE>
+<html lang="fr en" ng-app="myApp">
+<head>
+	<title>Framework-Home</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-language" content="en">
+	<meta http-equiv="content-language" content="fr">
+	<meta name="Framework 1" content="Free Web tutorials">
+	<meta name="42 project framework web" content="HTML,CSS,XML,JavaScript,Node,Angular">
+	<meta name="JayHo" content="Hege Refsnes">
+	<link rel="stylesheet" type="text/css" href="../public/stylesheet/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../public/stylesheet/style-home.css" />
+	<link rel="stylesheet" type="text/css" href="../public/stylesheet/animate.css">
+	<link rel="stylesheet" type="text/css" href="../public/stylesheet/hover.css">
+	<script type="text/javascript" src="../public/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="../public/angularjs/modules/angular-translate.js"></script>
+	<script type="text/javascript" src="../public/angularjs/modules/app.js"></script>
+</head>
+<body>
+	<div class="container home">
+		<div class="row">
+			<aside class="home-profile-pic col-xs-3 col-md-3 col-md-offset-1">
+				<div class="row">
+					<div class="home-profile-pic-1 col-md-12 animated fadeInLeft">
+						<img src="../public/images/profile-user.svg">
+						<ul>
+							<li>ID: sosdfdfsdfsdfsdfmething</li>
+							<li>Username: something</li>
+							<li>First Name: something</li>
+							<li>Last Name: something</li>
+						</ul>
+					</div>
+					<div class="home-profile-pic-2 col-md-12 animated fadeInUp">
+						<div class="navigation-title"><h3>Navigation</h3></div>
+						<div class="navigation-i18">
+							<button class="btn btn-primary ng-scope" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+							<button class="btn btn-primary ng-scope" ng-click="changeLanguage('fr')" translate="BUTTON_LANG_FR"></button>
+						</div>
+						<div class="navigation-elem">
+							<ul>
+								<li class="hvr-rectangle-in">
+									<a href=""><img src="../public/images/edit-icon.svg"></a>
+									<div class="hide-nav"><a href="">Edit</a></div>
+								</li>
+								<li class="hvr-rectangle-in">
+									<a href="forum.html"><img src="../public/images/forum-icon.svg"></a>
+									<div class="hide-nav"><a href="">Forum</a></div>
+								</li>
+								<li class="hvr-rectangle-in">
+									<a href=""><img src="../public/images/ticket-icon.svg"></a>
+									<div class="hide-nav"><a href="">Tickets</a></div>
+								</li>
+								<li class="hvr-rectangle-in">
+									<a href=""><img src="../public/images/logout-icon.svg"></a>
+									<div class="hide-nav"><a href="">Log out</a></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</aside>
+			<div class="home-profile-mailbox col-xs-4 col-md-4 animated fadeInDown">
+				<div class="mailbox-title"><p>Mailbox</p></div>
+				<div class="mailbox-nav">
+					<ul class="nav navbar-nav">
+						<li class="mailbox-f">
+
+							<a href=""><img src="../public/images/inbox-icon.svg"></a>
+						</li>
+						<li class="mailbox-f"><a href=""><img src="../public/images/starred-icon.svg"></a></li>
+						<li class="mailbox-f"><a href=""><img src="../public/images/flag-icon.svg"></a></li>
+						<li class="mailbox-f"><a href=""><img src="../public/images/sent-icon.svg"></a></li>
+						<li class="mailbox-f"><a href=""><img src="../public/images/delete-icon.svg"></a></li>
+					</ul>
+				</div>
+			</div>
+			<aside class="home-profile-right col-xs-3 col-md-3">
+				<div class="row">
+					<div id="clockdiv">
+					<div class="home-profile-schedule col-md-12 animated fadeInRight">
+						<div id="clockdiv">
+							<div class="clockdiv-elem">
+								<span class="days"></span>
+								<div class="smalltext">Days</div>
+							</div>
+							<div class="clockdiv-elem">
+								<span class="hours"></span>
+								<div class="smalltext">Hours</div>
+							</div>
+						</div>
+					</div>
+					<div class="home-profile-stars col-md-12 animated fadeInRight">
+						<div id="clockdiv">
+							<div class="clockdiv-elem">
+								<span class="minutes"></span>
+								<div class="smalltext">Minutes</div>
+							</div>
+							<div class="clockdiv-elem">
+								<span class="seconds"></span>
+								<div class="smalltext">Seconds</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="home-profile-other col-md-12">
+					</div>
+				</div>
+			</aside>
+			<div class="home-profile-not col-md-7 col-xs-10">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../public/javascript/countdown-timer.js"></script>
+</body>
+</html>

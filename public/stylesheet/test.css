@@ -1,0 +1,30 @@
+img {
+	width: auto;
+	height: 400px;
+}
+
+.cs-style-1 figcaption {
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	text-align: center;
+	backface-visibility: hidden;
+	transition: transform 0.3s, opacity 0.3s;
+}
+
+.cs-style-1 figure:hover figcaption{
+	opacity: 1;
+	transform: translate(15px, 15px);
+}
+
+.cs-style-1 figcaption h3 {
+	margin-top: 70px;
+}
+
+.cs-style-1 figcaption span {
+	display: block;
+}
+
+.cs-style-1 figcaption a {
+	margin-top: 30px;
+}

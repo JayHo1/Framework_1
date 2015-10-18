@@ -1,34 +1,49 @@
 <!DOCTYPE>
-<html ng-app="frame">
+<html lang="fr en" ng-app="myApp">
 <head>
 	<title>Framework1</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-language" content="en">
+	<meta http-equiv="content-language" content="fr">
+	<meta name="Framework 1" content="Free Web tutorials">
+	<meta name="42 project framework web" content="HTML,CSS,XML,JavaScript,Node,Angular">
+	<meta name="JayHo" content="Hege Refsnes">
 	<link rel="stylesheet" type="text/css" href="../public/stylesheet/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="../public/stylesheet/style.css" />
+	<link rel="stylesheet" type="text/css" href="../public/stylesheet/style-index.css" />
 	<link rel="stylesheet" type="text/css" href="../public/stylesheet/animate.css">
 	<script type="text/javascript" src="../public/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="../public/angularjs/modules/angular-translate.js"></script>
 	<script type="text/javascript" src="../public/angularjs/modules/app.js"></script>
 </head>
-<body>
+<body ng-controller="Ctrl">
 	<div class="container index-login">
 		<div class="row">
+			<button class="btn btn-primary ng-scope" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+			<button class="btn btn-primary ng-scope" ng-click="changeLanguage('fr')" translate="BUTTON_LANG_FR"></button>
 			<section class="cols-xs-12">
-				<h2>LOGIN</h1> <br />
+				<h1>LOGIN</h1> <br />
 			</section>
 			<div class="col-xs-12 input-login">
 				<form method="GET">
-					<input type="text" name="login" placeholder="Login" style="width: 300px; height: 30px;"> <br /> <br />
-					<input type="password" name="password" placeholder="Password" style="width: 300px; height: 30px"> <br />
+					<input type="text" name="login" placeholder="Login" value="" style="width: 300px; height: 35px;" /> <br /> <br />
+					<input type="password" name="password" placeholder="Password" style="width: 300px; height: 35px" /> <br /> <br />
+					<input type="submit" value="{{'TITLE' | translate}}" />
+					<a href="/Users/JayHo/Webs/Framework_1/views/home.html">S</a>
 				</form>
 			</div>
 			<div class="col-xs-12">
 				<div class="row">
 					<div class="col-lg-4 col-md-3 col-xs-8 col-lg-offset-1 col-md-offset-3 col-xs-offset-2 index-fd-image animated fadeInLeft">
-						<img class="bio-img" src="../public/images/jay-fd.jpg">
-						<a class="fd-bio" href="">Biography</a>
+						<figure>
+							<img class="bio-img" src="../public/images/jay-fd.jpg" alt="Jay Founder">
+							<a href="">{{'BIO' | translate}}</a>
+						</figure>
 					</div>
 					<div class="col-lg-4 col-md-3 col-xs-8 col-xs-offset-2 index-fd-image animated fadeInRight">
-						<img class="bio-img" src="../public/images/flo-fd.jpg">
-						<a class="fd-bio" href="">Biography</a>
+						<figure>
+							<img class="bio-img" src="../public/images/flo-fd.jpg" alt="Flo Slacker">
+							<a href="">{{'BIO' | translate}}</a>
+						</figure>
 					</div>
 				</div>
 			</div>
