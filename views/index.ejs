@@ -1,0 +1,85 @@
+<!DOCTYPE>
+<html lang="fr en" ng-app="Framework">
+<head>
+	<title>Framework1</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-language" content="en">
+	<meta http-equiv="content-language" content="fr">
+	<meta name="Framework 1" content="Free Web tutorials">
+	<meta name="42 project framework web" content="HTML,CSS,XML,JavaScript,Node,Angular">
+	<meta name="JayHo" content="Hege Refsnes">
+	<link rel="stylesheet" type="text/css" href="stylesheet/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheet/style-index.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheet/animate.css">
+	<script type="text/javascript" src="angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="angularjs/modules/angular-translate.js"></script>
+	<script type="text/javascript" src="angularjs/angular-cookies.js"></script>
+	<script type="text/javascript" src="angularjs/angular-translate-storage-cookie.js"></script>
+	<script type="text/javascript" src="angularjs/modules/app.js"></script>
+	<script type="text/javascript" src="angularjs/modules/services/translate.js"></script>
+	<script type="text/javascript" src="angularjs/modules/controllers/controller.js"></script>
+	<script>
+		function showDiv() {
+			document.getElementById('index-signup').style.display = "block";
+			document.getElementById("index-page").className = "container index-login index-filter";
+		};
+		function hideDiv() {
+			document.getElementById('index-signup').style.display = "none";
+			document.getElementById("index-page").className = "container index-login";
+		};
+	</script>
+</head>
+	<body ng-controller="userCtrl">
+	<div id="index-page" class="container index-login">
+		<div class="row">
+			<button class="btn btn-primary ng-scope" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+			<button class="btn btn-primary ng-scope" ng-click="changeLanguage('fr')" translate="BUTTON_LANG_FR"></button>
+			<section class="cols-xs-12">
+				<h1>{{'INDEX_LOGIN' | translate}}</h1> <br />
+			</section>
+			<div class="col-xs-12 input-login">
+				<form method="POST">
+					<input type="text" ng-model="user.login" placeholder="{{'PLH_USER' | translate}}" value="" style="width: 300px; height: 35px;" /> <br /> <br />
+					<input type="password" ng-model="user.password" placeholder="{{'PLH_PASS' | translate}}" style="width: 300px; height: 35px" /> <br /> <br />
+					
+					<input type="submit" ng-click="checkUser()" value="{{'INDEX_SIGNIN' | translate}}" />&nbsp;&nbsp;&nbsp;&nbsp;
+					<button onclick="showDiv()">{{'INDEX_REGISTER' | translate}}</span>
+				</form>
+			</div>
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-lg-4 col-md-3 col-xs-8 col-lg-offset-1 col-md-offset-3 col-xs-offset-2 index-fd-image animated fadeInLeft">
+						<figure>
+							<img class="bio-img" src="images/jay-fd.jpg" alt="Jay Founder">
+							<a href="">{{'INDEX_BIO' | translate}}</a>
+						</figure>
+					</div>
+					<div class="col-lg-4 col-md-3 col-xs-8 col-xs-offset-2 index-fd-image animated fadeInRight">
+						<figure>
+							<img class="bio-img" src="images/flo-fd.jpg" alt="Flo Slacker">
+							<a href="">{{'INDEX_BIO' | translate}}</a>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="index-signup" class="animated slideInDown" style="display:none;">
+		<div class="signup-form">
+			<h1>{{'INDEX_SIGNUP' | translate}}</h1> <br /> <br />
+			<form method="POST">
+				<input type="text" placeholder="  {{'PLH_FIRST' | translate}}" ng-model="contact.firstname" style="width: 144px; height: 35px;">&nbsp;&nbsp;
+				<input type="text" placeholder="  {{'PLH_LAST' | translate}}" ng-model="contact.lastname" style="width: 144px; height: 35px;">
+				<br /> <br />
+				<input type="text" placeholder="  {{'PLH_USER' | translate}}" ng-model="contact.username" style="width: 300px; height: 35px;">
+				<br /> <br />
+				<input type="email" placeholder="  {{'PLH_EMAIL' | translate}}" ng-model="contact.email" style="width: 300px; height: 35px;"><br /> <br />
+				<input type="password" placeholder="  {{'PLH_PASS' | translate}}" ng-model="contact.password" style="width: 300px; height: 35px;"> <br /> <br />
+				<input type="submit" target"_self" ng-click="addUser()" value="{{'INDEX_SIGNUP' | translate}}">
+				<span onclick="hideDiv()" style="cursor:pointer">{{'INDEX_CANCEL' | translate}}</span> <br />
+				{{error_message}}
+			</form>
+		</div>
+	</div>
+</body>
+</html>

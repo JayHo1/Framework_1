@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="Framework">
+<head>
+	<title>Framework1 Forum</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet/style-forum.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet/animate.css">
+	<script type="text/javascript" src="angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="angularjs/modules/angular-translate.js"></script>
+	<script type="text/javascript" src="angularjs/modules/app.js"></script>
+	<script type="text/javascript" src="angularjs/modules/services/translate.js"></script>
+	<script type="text/javascript" src="angularjs/modules/controllers/controller.js"></script>
+</head>
+<body>
+	<header id="header">
+		<div class="bg-top-header">
+			<div class="container">
+				<div class="row">
+					<div class="header-title col-md-2">
+						<h1>Framework1</h1>
+						{{'PLH_USER' | translate}}
+					</div>
+					<div class="col-md-10">
+						<form id="searchbox" action="">
+							<input type="text" placeholder="Search..." style="width: 400px; height: 40px;" />
+							<button type="submit" value="">
+								<img src="images/search-icon.svg">
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="bg-bottom-header">
+	</div>
+	<div class="container body-content">
+		<div class="row">
+			<div class="col-md-8">
+			<form method="GET">
+				<div class="text-search">
+					<div class="input-container">
+						<input onclick="show()" class="input-title" maxlength="90" name="post-title" type="text" placeholder="Click here to start your new topic">
+						<select class="select-items" name="category">
+							<option value="volvo">Volvo</option>
+							<option value="saab">Saab</option>
+							<option value="mercedes">Mercedes</option>
+							<option value="audi">Audi</option>	
+						</select>
+					</div>
+					<div id="input-text">
+						<textarea name="text-content" cols="104" rows="10"></textarea>
+					</div>
+				</div>
+				<div class="row" id="topic-submit">
+					<div class="col-md-6">
+						<a href="">Show preview</a>
+					</div>
+					<div class="col-md-6 topic-submit-button">
+						<button class="topic-creat" type="submit"> Create Topic </button>
+						<span onclick="hide()" style="cursor:pointer"><img src="images/cross-icon.svg">&nbsp;&nbsp;Cancel</span>
+					</div>
+				</div>
+			</form>
+			<ul>
+				<li class="highlights thread-item "></li>
+			</ul>
+			</div>
+			<div class="col-md-3">
+				<div class="forum-statistic">
+					<h5>STATISTICS</h5>
+					<hr />
+					<h3>&nbsp;&nbsp;&nbsp;&nbsp;15 MEMBERS</h4>
+					<hr />
+					<h3>&nbsp;&nbsp;&nbsp;&nbsp;111 THREADS</h4>
+					<hr />
+					<h3>&nbsp;&nbsp;&nbsp;&nbsp;0 REPLIES</h3>
+				</div>
+				<div class="forum-category">
+					<h5>CATEGORIES</h5>
+					<hr />
+				</div>
+				<div class="forum-hot-topic">
+					<h5>HOT TOPICS</h5>
+					<hr />
+				</div>
+				<div class="forum-user">
+					<h5>TOP USERS</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function show() {
+			document.getElementById('input-text').style.display = 'block';
+			document.getElementById('topic-submit').style.display = 'block';
+		}
+		function hide() {
+			document.getElementById('input-text').style.display = 'none';
+			document.getElementById('topic-submit').style.display = 'none';
+		}
+	</script>
+</body>
+</html>

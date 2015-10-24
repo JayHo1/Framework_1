@@ -1,0 +1,157 @@
+<!DOCTYPE>
+<html lang="fr en" ng-app="Framework">
+<head>
+	<title>Framework-Home</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-language" content="en">
+	<meta http-equiv="content-language" content="fr">
+	<meta name="Framework 1" content="Free Web tutorials">
+	<meta name="42 project framework web" content="HTML,CSS,XML,JavaScript,Node,Angular">
+	<meta name="JayHo" content="Hege Refsnes">
+	<link rel="stylesheet" type="text/css" href="stylesheet/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheet/style-home.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheet/animate.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet/hover.css">
+	<script type="text/javascript" src="angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="angularjs/modules/angular-translate.js"></script>
+	<script type="text/javascript" src="angularjs/angular-cookies.js"></script>
+	<script type="text/javascript" src="angularjs/angular-translate-storage-cookie.js"></script>
+	<script type="text/javascript" src="angularjs/modules/app.js"></script>
+	<script type="text/javascript" src="angularjs/modules/services/translate.js"></script>
+	<script type="text/javascript" src="angularjs/modules/controllers/controller.js"></script>
+</head>
+<body>
+	<div class="container home" ng-controller="userCtrl">
+		<div class="row">
+			<aside class="home-profile-pic col-xs-3 col-md-3 col-md-offset-1">
+				<div class="row">
+					<div class="home-profile-pic-1 col-md-12 animated fadeInLeft">
+						<img src="images/profile-user.svg">
+						<ul>
+							<li>{{'PLH_USER'	| translate}}: something</li>
+							<li>{{'PLH_FIRST'	| translate}}: something</li>
+							<li>{{'PLH_LAST'	| translate}}: something</li>
+						</ul>
+					</div>
+					<div class="home-profile-pic-2 col-md-12 animated fadeInUp">
+						<div class="navigation-title"><h3>Navigation</h3></div>
+						<div class="navigation-i18">
+							<button class="btn btn-primary ng-scope" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
+							<button class="btn btn-primary ng-scope" ng-click="changeLanguage('fr')" translate="BUTTON_LANG_FR"></button>
+						</div>
+						<div class="navigation-elem">
+							<ul>
+								<li class="hvr-rectangle-in">
+									<a href=""><img src="images/edit-icon.svg"></a>
+									<div class="hide-nav"><a href="">{{'HOME_EDIT'	| translate}}</a></div>
+								</li>
+								<li class="hvr-rectangle-in">
+									<a href="forum"><img src="images/forum-icon.svg"></a>
+									<div class="hide-nav"><a href="">Forum</a></div>
+								</li>
+								<li class="hvr-rectangle-in">
+									<a href=""><img src="images/ticket-icon.svg"></a>
+									<div class="hide-nav"><a href="">Tickets</a></div>
+								</li>
+								<li class="hvr-rectangle-in">
+									<a href="/logout"><img src="images/logout-icon.svg"></a>
+									<div class="hide-nav"><a href="">{{'HOME_LOGOUT'	| translate}}</a></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</aside>
+			<div class="home-profile-mailbox col-xs-4 col-md-4 animated fadeInDown">
+				<div class="mailbox-title"><p>{{'HOME_MAILBOX'	| translate}}</p></div>
+				<div class="mailbox-nav">
+					<ul class="nav navbar-nav">
+						<li class="mailbox-f">
+
+							<a href=""><img src="images/inbox-icon.svg"></a>
+						</li>
+						<li class="mailbox-f"><a href=""><img src="images/starred-icon.svg"></a></li>
+						<li class="mailbox-f"><a href=""><img src="images/flag-icon.svg"></a></li>
+						<li class="mailbox-f"><a href=""><img src="images/sent-icon.svg"></a></li>
+						<li class="mailbox-f"><a href=""><img src="images/delete-icon.svg"></a></li>
+					</ul>
+				</div>
+			</div>
+			<aside class="home-profile-right col-xs-3 col-md-3">
+				<div class="row">
+					<div id="clockdiv">
+					<div class="home-profile-schedule col-md-12 animated fadeInRight">
+						<div id="clockdiv">
+							<div class="clockdiv-elem">
+								<span class="days"></span>
+								<div class="smalltext">{{'HOME_COUNT.d'	| translate}}</div>
+							</div>
+							<div class="clockdiv-elem">
+								<span class="hours"></span>
+								<div class="smalltext">{{'HOME_COUNT.h'	| translate}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="home-profile-stars col-md-12 animated fadeInRight">
+						<div id="clockdiv">
+							<div class="clockdiv-elem">
+								<span class="minutes"></span>
+								<div class="smalltext">{{'HOME_COUNT.m'	| translate}}</div>
+							</div>
+							<div class="clockdiv-elem">
+								<span class="seconds"></span>
+								<div class="smalltext">{{'HOME_COUNT.s'	| translate}}</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="home-profile-other col-md-12">
+					</div>
+				</div>
+			</aside>
+			<div class="home-profile-ticket col-md-7 col-xs-10 animated fadeInRight">
+				<form method="POST">
+					<div class="ticket-title">
+						<h3>Tickets<img style="cursor:pointer" onclick="Ticket()" src="images/plus-icon.svg" alt="plus"></h3>
+					</div>
+					<div id="ticket-section1">
+						<div class="row">
+						<aside class="ticket-aside col-md-3">
+							<input type="text" placeholder="  Subject" ng-model="ticket.subject" style="width: 160px; height: 36">
+							<input type="text" placeholder="  Name" ng-model="ticket.name" style="width: 160px; height: 36">
+							<input type="text" placeholder="  Category" ng-model="ticket.category" style="width: 160px; height: 36">
+							<button type="submit" target"_self" ng-click="addTicket()">SEND</button>
+						</aside>
+						<textarea ng-model="ticket.content" class="ticket-message col-md-8" rows="7" cols="50"></textarea>
+						</div>
+					</div>
+					<div id="ticket-section2">
+						<div class="row">
+							<h1 style="color: white;">Hello World</h1>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function Ticket() {
+			if (document.getElementById('ticket-section1').style.display == "block")
+			{
+				document.getElementById('ticket-section1').style.display = "none";
+				document.getElementById('ticket-section2').style.display = "block";
+			}
+			else
+			{
+				document.getElementById('ticket-section1').style.display = "block";
+				document.getElementById('ticket-section2').style.display = "none";
+			}
+		};
+		// function hideTicket() {
+		// 	document.getElementById('index-signup').style.display = "none";
+		// 	document.getElementById("index-page").className = "container index-login";
+		// };
+	</script>
+	<script type="text/javascript" src="javascript/countdown-timer.js"></script>
+</body>
+</html>
