@@ -110,11 +110,10 @@
 				</div>
 			</aside>
 			<div class="home-profile-ticket col-md-7 col-xs-10 animated fadeInRight">
-				<form method="POST">
 					<div class="ticket-title">
 						<h3>Tickets<img style="cursor:pointer" onclick="Ticket()" src="images/plus-icon.svg" alt="plus"></h3>
 					</div>
-					<div id="ticket-section1">
+				<form id="ticket-section1" method="POST">
 						<div class="row">
 						<aside class="ticket-aside col-md-3">
 							<input type="text" placeholder="  Subject" ng-model="ticket.subject" style="width: 160px; height: 36">
@@ -124,13 +123,14 @@
 						</aside>
 						<textarea ng-model="ticket.content" class="ticket-message col-md-8" rows="7" cols="50"></textarea>
 						</div>
-					</div>
-					<div id="ticket-section2">
-						<div class="row">
-							<h1 style="color: white;">Hello World</h1>
-						</div>
-					</div>
 				</form>
+					<div id="ticket-section2">
+						<div class="topic-meta">
+							<h4>.</h4>
+							<span>{{ 'HOME_META.WRITE' | translate }}  &nbsp;&nbsp; date() &nbsp;&nbsp;&nbsp;&nbsp; {{ 'HOME_META.STATUS' | translate }}</span>
+						</div>
+						{{user_ticket}}
+					</div>
 			</div>
 		</div>
 	</div>
@@ -147,10 +147,6 @@
 				document.getElementById('ticket-section2').style.display = "none";
 			}
 		};
-		// function hideTicket() {
-		// 	document.getElementById('index-signup').style.display = "none";
-		// 	document.getElementById("index-page").className = "container index-login";
-		// };
 	</script>
 	<script type="text/javascript" src="javascript/countdown-timer.js"></script>
 </body>

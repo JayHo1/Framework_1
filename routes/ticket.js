@@ -3,12 +3,10 @@ var ticket	= require('../config/models/ticket');
 module.exports = function(app, ensureAuth, ensureAdmin) {
 
 	app.get('/home', ensureAuth, function(req, res) {
-		res.render('home', {message: req.user});
+		res.render('home');
 	});
 
 	app.post('/home/ticket', ensureAuth, function(req, res) {
-		console.log(req.body.content);
-		console.log(req.user._id);
 		var newTicket =	new ticket;
 
 		newTicket.ticket_id = req.user._id;
@@ -18,8 +16,11 @@ module.exports = function(app, ensureAuth, ensureAdmin) {
 		newTicket.category	= req.body.category;
 
 		newTicket.save(function(err) {
-			if (err) throw err;
+			if (err) res.send({success: false});
 			console.log("Ticket registered");
+			ticket.find({ticket_id: req.user._id}, function(err, ticket_data){
+				res.send({success: true, user_ticket: ticket_data});
+			});
 		});
 	});
 

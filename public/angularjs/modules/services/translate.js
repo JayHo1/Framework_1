@@ -18,6 +18,7 @@ angular.module('Framework')
 		HOME_LOGOUT		: 'Log out',
 		HOME_MAILBOX	: 'Mailbox',
 		HOME_COUNT		: {d: 'Days', h: 'Hours', m: 'Minutes', s: 'Seconds'},
+		HOME_META		: {WRITE: 'Written by ', STATUS: 'Being solved' },
 
 	    BUTTON_LANG_EN 	: 'English',
 	    BUTTON_LANG_FR	: 'French'
@@ -40,6 +41,7 @@ angular.module('Framework')
 		HOME_LOGOUT		: 'Déconnecter',
 		HOME_MAILBOX	: 'Boîte Mail',
 		HOME_COUNT		: {d: 'Jours', h: 'Heures', m: 'Minutes', s: 'Secondes'},
+		HOME_META		: {WRITE: 'Ouvert par ', STATUS: 'En cours' },
 
 	    BUTTON_LANG_EN	: 'Anglais',
 	    BUTTON_LANG_FR	: 'Français'

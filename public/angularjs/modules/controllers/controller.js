@@ -24,6 +24,7 @@ angular.module('Framework')
 
   	$scope.checkUser = function() {
   		$http.post('/login', $scope.user).success(function(res){
+        console.log("j'ai envoye la requete");
   			if (res.success)
   				$window.location.href = ('/home');
   			else
@@ -31,8 +32,18 @@ angular.module('Framework')
   		});
   	};
 
-    $scope.addTicket = function() {
-      console.log($scope.ticket);
-      $http.post('/home/ticket', $scope.ticket);
+    var refresh = function() {
+      $http.get('/home').success(function(res) {
+        console.log(res.user_ticket);
+      });
     };
+
+
+    $scope.addTicket = function() {
+      $http.post('/home/ticket', $scope.ticket)
+        .success(function(res) {
+          $scope.user_ticket = res.user_ticket;
+        });
+    };
+
 });

@@ -9,6 +9,7 @@ module.exports = function(connect2) {
 		name		: { type: String, required: true },
 		content		: { type: String, required: true },
 		category	: { type: String },
+		date_create : { type: Date, default: Date.now}
 	});
 
 	module.exports = connect2.model('ticket', ticketSchema);
