@@ -5,6 +5,6 @@ Web Language / Server         : Html / Node Js
 
 Framework Front_End / Modules : Angular Js
 
-Framework Back_End / Modules  : Sails Js
+Framework Back_End / Modules  : Express Js
 
 Database                      : MongoDB
