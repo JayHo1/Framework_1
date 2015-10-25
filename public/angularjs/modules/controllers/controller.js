@@ -1,9 +1,13 @@
 angular.module('Framework')
 	.controller('userCtrl', function ($scope, $http, $translate, $window) {
 
+    //*** Internationalization
+
     $scope.changeLanguage = function (key) {
         $translate.use(key);
       }; 
+
+    //*** Login Register
 
   	$scope.contact = {};
   	$scope.addUser = function() {
@@ -32,17 +36,16 @@ angular.module('Framework')
   		});
   	};
 
-    var refresh = function() {
-      $http.get('/home').success(function(res) {
-        console.log(res.user_ticket);
-      });
-    };
-
+    //*** Home Ticket
 
     $scope.addTicket = function() {
-      $http.post('/home/ticket', $scope.ticket)
+      $http.post('/home', $scope.ticket)
         .success(function(res) {
-          $scope.user_ticket = res.user_ticket;
+          $scope.cheat = res;
+          $scope.cheat_date = new Date();
+          document.getElementById('cheat').style.display = "block";
+          document.getElementById('ticket-section1').style.display = "none";
+          document.getElementById('ticket-section2').style.display = "block";
         });
     };
 

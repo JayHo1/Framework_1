@@ -9,6 +9,7 @@ module.exports = function(connect2) {
 		name		: { type: String, required: true },
 		content		: { type: String, required: true },
 		category	: { type: String },
+		status		: { type: String, default: "Being solved"},
 		date_create : { type: Date, default: Date.now}
 	});
 

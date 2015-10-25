@@ -124,13 +124,18 @@
 						<textarea ng-model="ticket.content" class="ticket-message col-md-8" rows="7" cols="50"></textarea>
 						</div>
 				</form>
-					<div id="ticket-section2">
-						<div class="topic-meta">
-							<h4>.</h4>
-							<span>{{ 'HOME_META.WRITE' | translate }}  &nbsp;&nbsp; date() &nbsp;&nbsp;&nbsp;&nbsp; {{ 'HOME_META.STATUS' | translate }}</span>
-						</div>
-						{{user_ticket}}
+				<div id="ticket-section2">
+				<% ticket.forEach(function(ticket) { %>
+					<div class="topic-meta">
+						<a href="/home/ticket/<%= ticket._id%>"><h4><%= ticket.subject %>.</h4></a>
+						<span>{{ 'HOME_META.WRITE' | translate }} <%=ticket.name %> &nbsp;&nbsp; <%= ticket.date_create.toLocaleDateString() %>&nbsp;&nbsp;&nbsp;&nbsp; {{ 'HOME_META.STATUS' | translate }}</span>
 					</div>
+				<% }) %>
+					<div id="cheat" class="topic-meta animated zoomIn" style="display: none;">
+						<a href=""><h4>{{ticket.subject}}.</h4></a>
+						<span>{{ 'HOME_META.WRITE' | translate }} {{cheat.name}} &nbsp;&nbsp; {{cheat_date}}&nbsp;&nbsp;&nbsp;&nbsp; {{ 'HOME_META.STATUS' | translate }}</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
