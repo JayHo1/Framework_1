@@ -1,9 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Framework">
 <head>
 	<title>Framework1 Ticket</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-language" content="en">
+	<meta http-equiv="content-language" content="fr">
+	<meta name="Framework 1" content="Free Web tutorials">
+	<meta name="42 project framework web" content="HTML,CSS,XML,JavaScript,Node,Angular">
+	<meta name="JayHo" content="Hege Refsnes">
+	<link rel="stylesheet" type="text/css" href="stylesheet/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheet/style-ticket.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheet/animate.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet/hover.css">
+	<script type="text/javascript" src="angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="angularjs/modules/angular-translate.js"></script>
+	<script type="text/javascript" src="angularjs/angular-cookies.js"></script>
+	<script type="text/javascript" src="angularjs/angular-translate-storage-cookie.js"></script>
+	<script type="text/javascript" src="angularjs/modules/app.js"></script>
+	<script type="text/javascript" src="angularjs/modules/services/translate.js"></script>
+	<script type="text/javascript" src="angularjs/modules/controllers/controller.js"></script>
 </head>
-<body>
-	<%= ticketData %>
+<body ng-controller="userCtrl">
+	<header>
+		<nav class="ticket-navbar">
+			<ul>
+				<a href="/logout"><li>{{'HOME_LOGOUT' | translate}}</li></a>
+				<a href="/home"><li>{{'TICKET_HOME' | translate}}</li></a>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<div id="ticket-body">
+			<div class="container">
+				<div class="ticket-row row">
+					<aside class="ticket-aside col-md-2">
+						<ul>
+							<a href=""><li>Forum</li></a>
+							<a href=""><li>Edit</li></a>
+							<a href=""><li>Blabla</li></a>
+							<a href=""><li>Caca</li></a>
+						</ul>
+					</aside>
+					<div class="ticket-main col-md-8 col-md-offset-1">
+						<h3><%= ticketData.subject %></h3>
+						<div class="message-primary">
+							<p><%= ticketData.content%></p>
+						</div>
+						<hr />
+						<div>
+							{{answerTicket}}
+						</div>
+						<div class="message-answer">
+							<form method="GET">
+								<input type="text" placeholder="Type your answer..." ng-model="answerTicket">
+								<button type="submit" ng-click="addAnswer">Send</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>				
+		</div>
+	</section>
 </body>
 </html>

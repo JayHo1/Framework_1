@@ -1,0 +1,84 @@
+
+body {
+	background-color: #EAEDF2;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #DBDBDB;
+}
+
+h3 {
+	margin-top: 0;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.ticket-navbar {
+	height: 60px;
+	background-color: #212121;
+	box-shadow: 0px 2px 10px #737373;
+}
+
+.ticket-navbar li {
+	display: inline;
+	float: right;
+	padding: 20px;
+	transition: 0.2s linear;
+}
+
+.ticket-navbar ul a li:hover {
+	background-color: #646464;
+	color: #DBDBDB;
+}
+
+.ticket-row {
+	margin-top: 100px;
+}
+
+.ticket-aside {
+	background-color: #3F51B5;
+	padding: 0;
+	box-shadow: 0px 4px 10px #C5CAE9;
+}
+
+.ticket-aside li {
+	padding: 15px 30px 15px 30px;
+	color: white;
+}
+
+.ticket-aside li:hover {
+	background-color: #FFCCBC;
+}
+
+.ticket-main {
+	background-color: white;
+	box-shadow: 0px 4px 10px #DBDBDB;
+}
+
+.message-answer {
+	margin-bottom: 20px;
+}
+
+.message-answer input {
+	padding: 10px;
+}
+
+.message-answer input[type=text] {
+	width: 90%;
+}
+
+.message-answer input[type=text]:focus {
+	outline: 0;
+}
+
+.message-answer button {
+	padding: 12px;
+}

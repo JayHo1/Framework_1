@@ -333,7 +333,11 @@ textarea {
 	text-align: left;
 	padding: 8px 5px 5px 8px;
 	border-bottom: 1px solid white;
-	width: 695px;
+	width: 710px;
+}
+
+.topic-meta:hover {
+	background-color: #212121;
 }
 
 .topic-meta span {
@@ -341,6 +345,7 @@ textarea {
 	font-size: 12px;
 	color: #FFCC80;
 }
+
 
 .topic-status {
 	float: right;

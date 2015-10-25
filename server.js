@@ -50,6 +50,7 @@ require('./config/models/crypt');
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
+app.use('/home/ticket', express.static(__dirname + '/public'));
 
 
 require('./routes/regist_user')(app, passport);

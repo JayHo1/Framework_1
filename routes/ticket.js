@@ -33,5 +33,4 @@ module.exports = function(app, ensureAuth, ensureAdmin) {
 				res.send(404, "ERROR SOMEWHERE!");
 		});
 	});
-
 };
