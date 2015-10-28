@@ -19,7 +19,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="header-title col-md-2">
-						<h1>Framework1</h1>
+						<a href="/home"><h1>Framework1</h1></a>
 					</div>
 					<div class="col-md-10">
 						<form id="searchbox" action="">
@@ -38,19 +38,19 @@
 	<div class="container body-content">
 		<div class="row">
 			<div class="col-md-8">
-			<form method="GET">
+			<form method="POST">
 				<div class="text-search">
 					<div class="input-container">
-						<input onclick="show()" class="input-title" maxlength="90" name="post-title" type="text" placeholder="{{'FORUM_CNT' | translate}}">
-						<select class="select-items" name="category">
-							<option value="volvo">Volvo</option>
-							<option value="saab">Saab</option>
-							<option value="mercedes">Mercedes</option>
-							<option value="audi">Audi</option>	
+						<input onclick="show()" class="input-title" maxlength="90" name="post-title" type="text" placeholder="{{'FORUM_CNT' | translate}}" ng-model="data.title">
+						<select class="select-items" name="category" ng-model="data.category">
+							<option value=""><----Please Select----></option>
+							<% if(categoryData){ categoryData.forEach(function(categoryData){ %>
+								<option value="<%= categoryData.name %>"><%= categoryData.name %></option>
+							<% }); } %>
 						</select>
 					</div>
 					<div id="input-text">
-						<textarea name="text-content" cols="104" rows="10"></textarea>
+						<textarea name="text-content" cols="104" rows="10" ng-model="data.content"></textarea>
 					</div>
 				</div>
 				<div class="row" id="topic-submit">
@@ -58,13 +58,24 @@
 						<a href="">{{'FORUM_SHOW' | translate}}</a>
 					</div>
 					<div class="col-md-6 topic-submit-button">
-						<button class="topic-creat" type="submit"> {{'FORUM_CT' | translate}} </button>
+						<button class="topic-creat" type="submit" ng-click="createTopic()"> {{'FORUM_CT' | translate}} </button>
 						<span onclick="hide()" style="cursor:pointer"><img src="images/cross-icon.svg">&nbsp;&nbsp;{{'INDEX_CANCEL' | translate}}</span>
 					</div>
 				</div>
 			</form>
 			<ul>
-				<li class="highlights thread-item "></li>
+				<% if (topicData) { topicData.forEach(function(topicData){ %>
+				<li class="highlights thread-item ">
+					<a href="/forum/thread/<%= topicData._id %>"><h3><%= topicData.topicTitle %></h3></a>
+					<span>
+						Written by: <%= topicData.topicAuthor %>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						Category: <%= topicData.topicCategory %> 
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						Date: <%= topicData.topicDate %>
+						</span>
+				</li>
+				<% }); } %>
 			</ul>
 			</div>
 			<div class="col-md-3">
@@ -79,6 +90,30 @@
 				</div>
 				<div class="forum-category">
 					<h5>{{'FORUM_CTG' | translate}}</h5>
+					<% if (user.user_permissions.admin == true) { %>
+					<form class="addCategory" method="POST">
+						<input class="addCtg" type="text" placeholder=" Add Category..." ng-model="ctg.newCtg">
+						<input type="submit" ng-click="addCtg()" value="Add">
+					</form>
+					<% } %>
+					<ul>
+						<% if(categoryData){ var i = 0; categoryData.forEach(function(categoryData){ %>
+								<li class="ctg-list">
+									<a id="ctg-<%= i++ %>" href=""><%= categoryData.name %></a>
+									<form id="<%= i %>" method="POST" style="display: none;">
+										<input type="text" ng-model="edit.ctg">
+										<input type="submit" value="submit" ng-click="ctg_edit('<%= categoryData.name %>')" style="display: none;">
+									</form>
+									<span class="category-tag">
+										<% if (user.user_permissions.admin == true) { %>
+											<button type="submit" ng-click="removeCtg('<%= categoryData.name %>')"> <img src="images/cross1-icon.svg"></button>
+											<img onclick="editCtg(<%= i%>)" src="images/edit1-icon.svg">
+										<% } %>
+										<img src="images/tag-icon.svg">
+									</span>
+								</li>
+						<% }); }%>
+					</ul>
 					<hr />
 				</div>
 				<div class="forum-hot-topic">
@@ -92,6 +127,14 @@
 		</div>
 	</div>
 	<script>
+		function editCtg(data) {
+			if (document.getElementById(data).style.display == 'none')
+			{
+				document.getElementById(data).style.display = 'block'
+			}
+			else
+				document.getElementById(data).style.display = 'none';
+		}
 		function show() {
 			document.getElementById('input-text').style.display = 'block';
 			document.getElementById('topic-submit').style.display = 'block';
@@ -103,10 +146,6 @@
 	</script>
 	<div class="footer">
 		<hr />
-		<div class="navigation-i18">
-			<button class="btn btn-primary ng-scope" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></button>
-			<button class="btn btn-primary ng-scope" ng-click="changeLanguage('fr')" translate="BUTTON_LANG_FR"></button>
-		</div>
 	</div>
 </body>
 </html>

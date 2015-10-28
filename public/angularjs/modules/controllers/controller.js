@@ -1,5 +1,5 @@
 angular.module('Framework')
-	.controller('userCtrl', function ($scope, $http, $translate, $window) {
+	.controller('userCtrl', function ($scope, $http, $translate, $window, $location) {
 
     //*** Internationalization
 
@@ -30,7 +30,7 @@ angular.module('Framework')
   		$http.post('/login', $scope.user).success(function(res){
         console.log("j'ai envoye la requete");
   			if (res.success)
-  				$window.location.href = ('/home');
+  				$window.location.href = ('/forum');
   			else
   				$scope.error_message = res.message;
   		});
@@ -43,10 +43,109 @@ angular.module('Framework')
         .success(function(res) {
           $scope.cheat = res;
           $scope.cheat_date = new Date();
+          console.log("hello");
           document.getElementById('cheat').style.display = "block";
           document.getElementById('ticket-section1').style.display = "none";
           document.getElementById('ticket-section2').style.display = "block";
         });
+    };
+
+    $scope.addAnswer = function() {
+      var paramValue = $location.absUrl();
+      $scope.answerTicket.ans_id = paramValue.slice(34);
+      $http.post('/home/ticket', $scope.answerTicket).success(function(res){
+        if (res.success)
+          $window.location.href = (paramValue);
+        else
+          console.log("NOT OK");
+      });
+    };
+
+    $scope.remove_ticket = function(data) {
+      $scope.ticket = {
+        _id: data
+      };
+      $http.post('/home/ticket/remove', $scope.ticket).success(function(res){
+        if (res.success)
+          $window.location.href = ('/home');
+        else
+          console.log('Remove fail!');
+      });
+    };
+
+    $scope.lock_ticket = function(data) {
+      $scope.lock = {
+        _id: data
+      };
+      $http.post('/home/ticket/lock', $scope.lock).success(function(res){
+        if (res.close == true) {
+          document.getElementById(res._id).src = 'images/lock1-icon.svg';
+          $scope.flashMessage = res.message;
+        }
+        else {
+          document.getElementById(res._id).src = 'images/lock2-icon.svg';
+          $scope.flashMessage = res.message;
+        }
+      });
+    };
+
+    //*** Forum Category
+
+    $scope.addCtg = function() {
+      if (!$scope.ctg.newCtg)
+        $scope.message = "Field required !";
+      else {
+        $http.post('/forum/addctg', $scope.ctg).success(function(res){
+          $window.location.href = ('/forum');
+        });
+      }
+    };
+
+    $scope.removeCtg = function(data) {
+      $scope.ctg = {
+        name: data
+      };
+      $http.post('/forum/rmctg', $scope.ctg).success(function(res){
+         $window.location.href = ('/forum');
+      });
+    };
+
+    $scope.ctg_edit = function(data) {
+      $scope.edit.oldCtg = data;
+      $http.post('/forum/editctg', $scope.edit).success(function(res){
+        $window.location.href = ('/forum');
+      });
+    };
+
+    //*** Forum Topic
+
+    $scope.createTopic = function() {
+      if ($scope.data.title && $scope.data.content && $scope.data.category)
+      {
+        $http.post('/forum/thread', $scope.data).success(function(res){
+          $window.location.href = ('/forum');
+        });
+      }
+      else {
+        $scope.message = "Field required!";
+      }
+    };
+
+    $scope.addTr = function() {
+      var topicUrl = $location.absUrl();
+      $scope.topicReply.replyId = topicUrl.slice(35);
+      $http.post('/forum/thread/topic', $scope.topicReply).success(function(res){
+        if (res.success)
+          $window.location.href = (topicUrl);
+        else
+          console.log("Message not send!");
+      });
+    };
+
+    $scope.addRepSub = function(data, i) {
+      $scope.message.data = data;
+      $scope.message.count = i;
+      $http.post('/home/thread/replySub', $scope.message);
     };
 
 });

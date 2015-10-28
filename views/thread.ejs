@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="Framework">
 <head>
-	<title>Framework1 Ticket</title>
+	<title>Framework1 Thread</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="content-language" content="en">
 	<meta http-equiv="content-language" content="fr">
@@ -42,29 +42,36 @@
 						</ul>
 					</aside>
 					<div class="ticket-main col-md-8 col-md-offset-1">
-						<h3><%= ticketData.subject %></h3>
+						<h3><%= topic.topicTitle %></h3>
 						<div class="message-primary">
-							<p><%= ticketData.content%></p>
+							<p><%= topic.topicCategory%></p>
 						</div>
 						<hr />
-					<% if (answerData) { tickets.forEach(function(tickets){%>
+					<% if (topic) { var i = 0; topicReply.forEach(function(topicReply){%>
 						<div class="reply-profile">
-							<h4><%= tickets.rep_user%></h4>
-							<span><%= tickets.rep_date %></span>
+							<div class="reply-title">
+								<img onclick="display_reply('<%= topicReply._id %>')" src="images/reply-icon.svg" style="cursor: pointer;">
+								<h4><%= topicReply.topicRep_user%></h4>
+							</div>
+							<span><%= topicReply.topicRep_date%></span>
 						</div>
 						<div class="message-content">
-							<p><%= tickets.rep_message%></p>
+							<p><%= topicReply.topicRep_message%></p>
+							<form id="<%= topicReply._id %>" method="POST" style="display: none;">
+								<input type="text" ng-model="message.rep[<%= ++i %>]" style="width: 300px;">
+								<input type="submit" ng-click="addRepSub('<%= topicReply._id %>', <%= i %>)" value="ok" style="display: none;">
+							</form>
 						</div>
 						<hr />
 					<% }); }%>
-						<div>
-							{{answerTicket.content}}
-						</div>
-					<% if (ticketData.status == 'Being solved') { %>
+					<div>
+						{{topicReply.content}}
+					</div>
+					<% if (topic.topicStatus == 'open') { %>
 						<div class="message-answer">
 							<form method="POST">
-								<input type="text" placeholder="Type your answer..." ng-model="answerTicket.content">
-								<button type="submit" ng-click="addAnswer()">Send</button>
+								<input type="text" placeholder="Type your answer..." ng-model="topicReply.contentText">
+								<button type="submit" ng-click="addTr()">Send</button>
 							</form>
 						</div>
 					<% } %>
@@ -73,5 +80,16 @@
 			</div>				
 		</div>
 	</section>
+	<script type="text/javascript">
+		function display_reply(data) {
+			if (document.getElementById(data).style.display == "none")
+			{
+				document.getElementById(data).style.display = "block";
+				console.log("OK");
+			}
+			else
+				document.getElementById(data).style.display = "none";
+		};
+	</script>
 </body>
 </html>

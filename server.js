@@ -11,7 +11,7 @@ var express 		= require('express');
 	cookieParser	= require('cookie-parser');
 	flash			= require('connect-flash');
 	ensureAuth 		= require('./routes/auth').ensureAuthenticated;
-	ensureAdmin		= require('./routes/auth').ensureensureAdminAuthenticated;
+	ensureAdmin		= require('./routes/auth').ensureAdminAuthenticated;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -39,27 +39,29 @@ app.use(passport.session());
 
 var connect 	= mongoose.createConnection('mongodb://localhost/user_data');
 var connect2 	= mongoose.createConnection('mongodb://localhost/ticket');
-// var connect3	= mongoose.createConnection('mongodb://localhost/forum');
+var connect3	= mongoose.createConnection('mongodb://localhost/ticket_answer');
+var connect4	= mongoose.createConnection('mongodb://localhost/forum');
+var connect5 	= mongoose.createConnection('mongodb://localhost/topic');
 
 require('./config/models/users')(connect);
 require('./config/models/ticket')(connect2);
+require('./config/models/answer')(connect3);
+require('./config/models/forum_ctg')(connect4);
+require('./config/models/topic')(connect5);
 require('./config/models/crypt');
 
 //***=================   ROUTES MIDDLEWARES  =================***//
 
-app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 app.use('/home/ticket', express.static(__dirname + '/public'));
+app.use('/forum/thread', express.static(__dirname + '/public'));
 
 
-require('./routes/regist_user')(app, passport);
 require('./config/passport/passport')(passport);
+require('./routes/regist_user')(app, passport);
 require('./routes/ticket')(app, ensureAuth, ensureAdmin);
-
-app.get('/forum', ensureAuth, function(req, res) {
-	res.render('forum');
-});
+require('./routes/forum')(app, ensureAuth, ensureAdmin);
 
 
 //***=================   SERVER HTTPS  =================***//

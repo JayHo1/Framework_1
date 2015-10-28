@@ -23,11 +23,12 @@ angular.module('Framework')
 		HOME_MAILBOX	: 'Mailbox',
 		HOME_COUNT		: {d: 'Days', h: 'Hours', m: 'Minutes', s: 'Seconds'},
 		HOME_META		: {WRITE: 'Written by ', STATUS: 'Being solved' },
+		GROUP			: 'Group',
 
 		//*** Forum
 
-		FORUM_SRCH		: 'Search',
-		FORUM_CNT		: 'Click here to start your new topic',
+		FORUM_SRCH		: '   Search',
+		FORUM_CNT		: '   Click here to start your new topic',
 		FORUM_CT 		: 'Create Topic',
 		FORUM_SHOW		: 'Show preview',
 		FORUM_STAT		: 'Satistics',
@@ -39,6 +40,7 @@ angular.module('Framework')
 		//*** Ticket
 
 		TICKET_HOME		: 'Home',
+		TICKET_LOGOUT	: 'Log Out',
 
 	    BUTTON_LANG_EN 	: 'English',
 	    BUTTON_LANG_FR	: 'French'
@@ -66,6 +68,7 @@ angular.module('Framework')
 		HOME_MAILBOX	: 'Boîte Mail',
 		HOME_COUNT		: {d: 'Jours', h: 'Heures', m: 'Minutes', s: 'Secondes'},
 		HOME_META		: {WRITE: 'Ouvert par ', STATUS: 'En cours' },
+		GROUP			: 'Groupe',
 
 		//*** Forum
 
@@ -78,6 +81,10 @@ angular.module('Framework')
 		FORUM_CTG		: 'Catégories',
 		FORUM_TOP		: 'Chocolat Chaud',
 		FORUM_HU		: 'Bonne gonzesse',
+
+		//*** Ticket
+		TICKET_HOME		: 'Connard',
+		TICKET_LOGOUT	: 'Déconnecter',
 
 	    BUTTON_LANG_EN	: 'Anglais',
 	    BUTTON_LANG_FR	: 'Français'

@@ -28,9 +28,14 @@
 					<div class="home-profile-pic-1 col-md-12 animated fadeInLeft">
 						<img src="images/profile-user.svg">
 						<ul>
-							<li>{{'PLH_USER'	| translate}}: something</li>
-							<li>{{'PLH_FIRST'	| translate}}: something</li>
-							<li>{{'PLH_LAST'	| translate}}: something</li>
+							<li>{{'PLH_USER'	| translate}}: <%= user.user_info.username%></li>
+							<li>{{'PLH_FIRST'	| translate}}: <%= user.user_info.firstname%></li>
+							<li>{{'PLH_LAST'	| translate}}: <%= user.user_info.lastname%></li>
+							<% if (user.user_permissions.admin) { %>
+								<li>{{'GROUP'	| translate}}: Admin </li>
+							<% } else { %>
+								<li>{{'GROUP'	| translate}}: User </li>
+							<% } %>
 						</ul>
 					</div>
 					<div class="home-profile-pic-2 col-md-12 animated fadeInUp">
@@ -129,6 +134,18 @@
 					<div class="topic-meta">
 						<a href="/home/ticket/<%= ticket._id%>"><h4><%= ticket.subject %>.</h4></a>
 						<span>{{ 'HOME_META.WRITE' | translate }} <%=ticket.name %> &nbsp;&nbsp; <%= ticket.date_create.toLocaleDateString() %>&nbsp;&nbsp;&nbsp;&nbsp; {{ 'HOME_META.STATUS' | translate }}</span>
+						<form class="remove_elem" method="POST">
+							<button ng-click="remove_ticket('<%= ticket._id%>')"><img src="images/bin-icon.svg"></button>
+						</form>
+						<form class="remove_elem" method="POST">
+							<button ng-click="lock_ticket('<%= ticket._id%>')">
+							<% if (ticket.status == 'Being solved') { %>
+								<img id="<%= ticket._id%>" src="images/lock2-icon.svg">
+							<% } else { %>
+								<img id="<%= ticket._id%>" src="images/lock1-icon.svg">
+							<% } %>
+							</button>
+						</form>
 					</div>
 				<% }) %>
 					<div id="cheat" class="topic-meta animated zoomIn" style="display: none;">
@@ -140,6 +157,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+
 		function Ticket() {
 			if (document.getElementById('ticket-section1').style.display == "block")
 			{

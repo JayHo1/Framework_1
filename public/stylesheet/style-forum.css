@@ -15,6 +15,17 @@ h3, h5 {
 	font-weight: 600;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	margin-top: 20px;
+}
+
 ::-webkit-input-placeholder {
    font-family: 'Source Sans Pro';
    font-weight: 300;
@@ -88,7 +99,7 @@ button:focus {
 
 .input-container input[type=text] {
 	background-color: #EDEDED;
-	width: 550px;
+	width: 500px;
 	height: 50px;
 	border-right: 1px solid #BDBDBD;
 }
@@ -150,5 +161,49 @@ textarea {
 	margin-top: 30px;
 }
 
-/***	Header	 ***/
-/***	Header	 ***/
+/***	Thread	 ***/
+
+.highlights {
+	background-color: #E3E3E3;
+	margin-top: 1px;
+}
+
+.highlights h3 {
+	margin-top: 0;
+}
+/***	Category	 ***/
+
+.forum-category {
+	display: inline-block;
+}
+
+.forum-category ul {
+	width: 240px;
+}
+
+.ctg-list {
+	margin-bottom: 10px;
+	margin-left: 25px;
+}
+
+.category-tag {
+	float: right;
+}
+
+.category-tag button {
+	background: none;
+	border: 0;
+}
+
+.forum-category a {
+	color: #7B7B7B;
+}
+
+.forum-category a:hover {
+	color: #27AE60;
+}
+
+.addCategory {
+	margin-left: 20px;
+}
+

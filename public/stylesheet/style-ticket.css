@@ -82,3 +82,23 @@ a:hover {
 .message-answer button {
 	padding: 12px;
 }
+
+.reply-profile h4 {
+	width: 400px;
+}
+
+.reply-profile {
+	display: inline;
+	
+}
+
+.reply-profile span {
+	float: right;
+}
+
+.reply-title {
+	display: inline;
+}
+.reply-title img {
+	float: right;
+}
