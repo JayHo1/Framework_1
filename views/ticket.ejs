@@ -42,7 +42,21 @@
 						</ul>
 					</aside>
 					<div class="ticket-main col-md-8 col-md-offset-1">
-						<h3><%= ticketData.subject %></h3>
+						<div>
+						<% if (user.user_permissions.admin == true) { %>
+							<form>
+							<button type="submit" ng-click="assAdmin()" style="float: right; margin-top: 3px;">Get</button>
+							<select class="select-items" name="category" ng-model="data.admin" style="float: right;">
+								<option value="">Assign To</option>
+								<% if (admin) { admin.forEach(function(admin){ %>
+									<option value="<%= admin.user_info.username%>"><%= admin.user_info.username%></option>
+								<%});}%>
+							</select>
+							</form>
+						<% } %>
+							<h3><%= ticketData.subject %></h3>
+						</div>
+						<span style="float: right;">Assign to:&nbsp;<%=ticketData.assignTo%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= ticketData.date_create%></span>
 						<div class="message-primary">
 							<p><%= ticketData.content%></p>
 						</div>

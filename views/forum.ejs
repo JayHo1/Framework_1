@@ -43,7 +43,7 @@
 					<div class="input-container">
 						<input onclick="show()" class="input-title" maxlength="90" name="post-title" type="text" placeholder="{{'FORUM_CNT' | translate}}" ng-model="data.title">
 						<select class="select-items" name="category" ng-model="data.category">
-							<option value=""><----Please Select----></option>
+							<option value=""><----{{'FORUM_SL'| translate}}----></option>
 							<% if(categoryData){ categoryData.forEach(function(categoryData){ %>
 								<option value="<%= categoryData.name %>"><%= categoryData.name %></option>
 							<% }); } %>
@@ -66,11 +66,17 @@
 			<ul>
 				<% if (topicData) { topicData.forEach(function(topicData){ %>
 				<li class="highlights thread-item ">
-					<a href="/forum/thread/<%= topicData._id %>"><h3><%= topicData.topicTitle %></h3></a>
+					<div>
+					<% if (user.user_permissions.admin == true) { %>
+						<button type="submit" ng-click="removeThread('<%= topicData._id %>')" style="float: right;">
+						<img src="images/bin1-icon.svg"></button>
+					<% } %>
+						<a href="/forum/thread/<%= topicData._id %>"><h3><%= topicData.topicTitle %></h3></a>
+					</div>
 					<span>
-						Written by: <%= topicData.topicAuthor %>
+						{{'HOME_META.WRITE' | translate}}: <%= topicData.topicAuthor %>
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						Category: <%= topicData.topicCategory %> 
+						{{'FORUM_CG' | translate}}: <%= topicData.topicCategory %> 
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						Date: <%= topicData.topicDate %>
 						</span>
@@ -99,11 +105,8 @@
 					<ul>
 						<% if(categoryData){ var i = 0; categoryData.forEach(function(categoryData){ %>
 								<li class="ctg-list">
+								<div>
 									<a id="ctg-<%= i++ %>" href=""><%= categoryData.name %></a>
-									<form id="<%= i %>" method="POST" style="display: none;">
-										<input type="text" ng-model="edit.ctg">
-										<input type="submit" value="submit" ng-click="ctg_edit('<%= categoryData.name %>')" style="display: none;">
-									</form>
 									<span class="category-tag">
 										<% if (user.user_permissions.admin == true) { %>
 											<button type="submit" ng-click="removeCtg('<%= categoryData.name %>')"> <img src="images/cross1-icon.svg"></button>
@@ -111,6 +114,11 @@
 										<% } %>
 										<img src="images/tag-icon.svg">
 									</span>
+								</div>
+									<form id="<%= i %>" method="POST" style="display: none;">
+										<input type="text" ng-model="edit.ctg">
+										<input type="submit" value="submit" ng-click="ctg_edit('<%= categoryData.name %>')" style="display: none;">
+									</form>
 								</li>
 						<% }); }%>
 					</ul>

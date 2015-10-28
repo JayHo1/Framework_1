@@ -8,6 +8,7 @@ module.exports = function(connect2) {
 		subject		: { type: String, required: true },
 		name		: { type: String, required: true },
 		content		: { type: String, required: true },
+		assignTo	: { type: String, default: "" },
 		category	: { type: String },
 		status		: { type: String, default: "Being solved"},
 		date_create : { type: Date, default: Date.now}

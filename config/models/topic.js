@@ -15,9 +15,9 @@ module.exports = function(connect5) {
 		topicReply				: [{
 			topicRep_user		: {type : String},
 			topicRep_message 	: {type : String},
-			topicRep_sub		: [{ 	repSub_user: {type : String}, 
-										repSub_content: {type: String}
-																		}],
+			// topicRep_sub		: [{ 	repSub_user: {type : String}, 
+			// 							repSub_content: {type: String}
+			// 															}],
 			topicRep_date		: {type : Date, default: Date.now}
 		}]
 	});

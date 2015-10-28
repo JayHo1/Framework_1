@@ -133,7 +133,7 @@
 				<% ticket.forEach(function(ticket) { %>
 					<div class="topic-meta">
 						<a href="/home/ticket/<%= ticket._id%>"><h4><%= ticket.subject %>.</h4></a>
-						<span>{{ 'HOME_META.WRITE' | translate }} <%=ticket.name %> &nbsp;&nbsp; <%= ticket.date_create.toLocaleDateString() %>&nbsp;&nbsp;&nbsp;&nbsp; {{ 'HOME_META.STATUS' | translate }}</span>
+						<span>{{ 'HOME_META.WRITE' | translate }} <%=ticket.name %> &nbsp;&nbsp; <%= ticket.date_create.toLocaleDateString() %>&nbsp;&nbsp;&nbsp;&nbsp; Status:&nbsp; <%= ticket.status%> &nbsp;&nbsp;&nbsp;&nbsp; {{'HOME_ASSIGN' | translate}}:&nbsp; <%=ticket.assignTo%></span>
 						<form class="remove_elem" method="POST">
 							<button ng-click="remove_ticket('<%= ticket._id%>')"><img src="images/bin-icon.svg"></button>
 						</form>

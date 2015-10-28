@@ -1,7 +1,7 @@
 // Authentication
 
 exports.ensureAdminAuthenticated = function(req, res, next) {
-	if (req.isAuthenticated() && req.user_permissions.admin) {
+	if (req.isAuthenticated() && req.user.user_permissions.admin) {
 		return next();
 	} else {
 		res.sendStatus(403);

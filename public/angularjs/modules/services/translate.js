@@ -23,6 +23,7 @@ angular.module('Framework')
 		HOME_MAILBOX	: 'Mailbox',
 		HOME_COUNT		: {d: 'Days', h: 'Hours', m: 'Minutes', s: 'Seconds'},
 		HOME_META		: {WRITE: 'Written by ', STATUS: 'Being solved' },
+		HOME_ASSIGN		: 'Assign To',
 		GROUP			: 'Group',
 
 		//*** Forum
@@ -33,9 +34,11 @@ angular.module('Framework')
 		FORUM_SHOW		: 'Show preview',
 		FORUM_STAT		: 'Satistics',
 		FORUM_NB		: {MEM: 'Members', THR: 'Threads', REP: 'Replies'},
-		FORUM_CTG		: 'Categories',
+		FORUM_CTG		: 'Categories & Sub-Categories',
 		FORUM_TOP		: 'Hot Topics',
 		FORUM_HU		: 'Top Users',
+		FORUM_SL		: 'Please Select',
+		FORUM_CG 		: 'Category',
 
 		//*** Ticket
 
@@ -68,19 +71,22 @@ angular.module('Framework')
 		HOME_MAILBOX	: 'Boîte Mail',
 		HOME_COUNT		: {d: 'Jours', h: 'Heures', m: 'Minutes', s: 'Secondes'},
 		HOME_META		: {WRITE: 'Ouvert par ', STATUS: 'En cours' },
+		HOME_ASSIGN		: 'Assigné à',
 		GROUP			: 'Groupe',
 
 		//*** Forum
 
-		FORUM_SRCH		: 'Recherche',
-		FORUM_CNT		: 'Cliquez ici pour créer un nouveau sujet',
+		FORUM_SRCH		: '   Recherche',
+		FORUM_CNT		: '   Cliquez ici pour créer un nouveau sujet',
 		FORUM_CT 		: 'Créer un sujet',
 		FORUM_SHOW		: 'Aperçu',
 		FORUM_STAT		: 'Statistiques',
 		FORUM_NB		: {MEM: 'Membres', THR: 'Discussions', REP: 'Réponds'},
-		FORUM_CTG		: 'Catégories',
+		FORUM_CTG		: 'Catégories et Sous-Catégories',
 		FORUM_TOP		: 'Chocolat Chaud',
 		FORUM_HU		: 'Bonne gonzesse',
+		FORUM_SL		: 'Veuillez choisir',
+		FORUM_CG 		: 'Catégorie',
 
 		//*** Ticket
 		TICKET_HOME		: 'Connard',

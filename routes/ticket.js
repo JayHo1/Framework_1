@@ -1,5 +1,6 @@
 var ticket	= require('../config/models/ticket');
 var answer	= require('../config/models/answer');
+var admin 	= require('../config/models/users');
 
 module.exports = function(app, ensureAuth, ensureAdmin) {
 
@@ -15,6 +16,14 @@ module.exports = function(app, ensureAuth, ensureAdmin) {
 				res.render('home', {ticket: ticket_datas, user: req.user});
 			});
 		}
+	});
+
+	app.post('/ticket/assign', ensureAdmin, function(req, res) {
+		ticket.update({_id: req.body.ticketId}, {$set: {assignTo: req.body.admin}}, function(err){
+			if (err) throw err;
+			console.log("Assign success!");
+			res.send({success: true});
+		});
 	});
 
 	app.post('/home', ensureAuth, function(req, res) {
@@ -33,7 +42,7 @@ module.exports = function(app, ensureAuth, ensureAdmin) {
 		});
 	});
 
-	app.post('/home/ticket/remove', function(req, res) {
+	app.post('/home/ticket/remove', ensureAuth, function(req, res) {
 		ticket.remove({ _id: req.body._id}, function(err) {
 			answer.remove({rep_id: req.body._id}, function(err) {
 				if (err) res.send({success: false});
@@ -43,11 +52,10 @@ module.exports = function(app, ensureAuth, ensureAdmin) {
 		});
 	});
 
-	app.post('/home/ticket/lock', function(req, res) {
+	app.post('/home/ticket/lock', ensureAuth, function(req, res) {
 		ticket.findOne({ _id: req.body._id}, function(err, data){
-			console.log(data);
 			if (data.status == 'Being solved') {
-				ticket.update({ _id: req.body._id}, { $set: { status: 'close'}}, function(err){
+				ticket.update({ _id: req.body._id}, { $set: { status: 'Close'}}, function(err){
 					if (err) throw err;
 					console.log("Ticket close !");
 					res.send({close: true, message: "Ticket close !", _id: req.body._id});
@@ -67,19 +75,25 @@ module.exports = function(app, ensureAuth, ensureAdmin) {
 		ticket.findOne({ _id: req.params.ticketId }, function(err, ticket_data){
 			if ((req.user._id == ticket_data.ticket_id) || req.user.user_permissions.admin) {
 				answer.findOne({ rep_id: req.params.ticketId}, function(err, answer_data){
-					if (answer_data)
-					{
-						res.render('ticket', { 
-							ticketData: ticket_data,
-							answerData: answer_data,
-							tickets: answer_data.rep
-						});
-					}
-					else
-						res.render('ticket', { 
-							ticketData: ticket_data, 
-							answerData: false,
-						});
+					admin.find({'user_permissions.admin': true}, function(err, admin_data) {
+						if (answer_data) {
+							res.render('ticket', {
+								admin: admin_data,
+								ticketData: ticket_data,
+								answerData: answer_data,
+								tickets: answer_data.rep,
+								user: req.user
+							});
+						}
+						else {
+							res.render('ticket', { 
+								admin: admin_data,
+								ticketData: ticket_data, 
+								user: req.user,
+								answerData: false,
+							});
+						}
+					});
 				});
 			}
 			else
@@ -87,7 +101,7 @@ module.exports = function(app, ensureAuth, ensureAdmin) {
 		});
 	});
 
-	app.post('/home/ticket', function(req, res) {
+	app.post('/home/ticket', ensureAuth, function(req, res) {
 		answer.findOne({ rep_id: req.body.ans_id }, function(err, data) {
 			if (err) res.send({success: false});
 			if (!data)

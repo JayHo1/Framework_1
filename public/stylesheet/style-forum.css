@@ -165,7 +165,7 @@ textarea {
 
 .highlights {
 	background-color: #E3E3E3;
-	margin-top: 1px;
+	margin-top: 2px;
 }
 
 .highlights h3 {
@@ -205,5 +205,14 @@ textarea {
 
 .addCategory {
 	margin-left: 20px;
+}
+
+.thread-item a {
+	color: #727272;
+}
+
+.thread-item button {
+	background: none;
+	border: none;
 }
 

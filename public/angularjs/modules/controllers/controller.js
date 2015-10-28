@@ -30,7 +30,7 @@ angular.module('Framework')
   		$http.post('/login', $scope.user).success(function(res){
         console.log("j'ai envoye la requete");
   			if (res.success)
-  				$window.location.href = ('/forum');
+  				$window.location.href = ('/home');
   			else
   				$scope.error_message = res.message;
   		});
@@ -89,6 +89,17 @@ angular.module('Framework')
       });
     };
 
+    $scope.assAdmin = function() {
+      var url = $location.absUrl();
+      $scope.data.ticketId = url.slice(34);
+      $http.post('/ticket/assign', $scope.data).success(function(res) {
+        if (res.success)
+          $window.location.href = (url);
+        else
+          console.log('Assign fail!');
+      });
+    };
+
     //*** Forum Category
 
     $scope.addCtg = function() {
@@ -142,10 +153,28 @@ angular.module('Framework')
       });
     };
 
+    $scope.removeThread = function(data) {
+      $scope.remove = {
+        threadId: data
+      };
+      $http.post('/forum/remove/thread', $scope.remove).success(function(res){ 
+        if (res.success)
+          $window.location.href = ('/forum');
+        else
+          console.log("Remove Fail!");
+      });
+    };
+
     $scope.addRepSub = function(data, i) {
+      var topicUrl = $location.absUrl();
       $scope.message.data = data;
       $scope.message.count = i;
-      $http.post('/home/thread/replySub', $scope.message);
+      $http.post('/home/thread/replySub', $scope.message).success(function(res){
+        if (res.success)
+          $window.location.href = (topicUrl);
+        else
+          console.log("Reply not send!");
+      });
     };
 
 });

@@ -42,12 +42,15 @@ var connect2 	= mongoose.createConnection('mongodb://localhost/ticket');
 var connect3	= mongoose.createConnection('mongodb://localhost/ticket_answer');
 var connect4	= mongoose.createConnection('mongodb://localhost/forum');
 var connect5 	= mongoose.createConnection('mongodb://localhost/topic');
+var connect6	= mongoose.createConnection('mongodb://localhost/replysub');
 
 require('./config/models/users')(connect);
 require('./config/models/ticket')(connect2);
 require('./config/models/answer')(connect3);
 require('./config/models/forum_ctg')(connect4);
 require('./config/models/topic')(connect5);
+require('./config/models/replyTopic')(connect6);
+
 require('./config/models/crypt');
 
 //***=================   ROUTES MIDDLEWARES  =================***//
@@ -62,6 +65,7 @@ require('./config/passport/passport')(passport);
 require('./routes/regist_user')(app, passport);
 require('./routes/ticket')(app, ensureAuth, ensureAdmin);
 require('./routes/forum')(app, ensureAuth, ensureAdmin);
+
 
 
 //***=================   SERVER HTTPS  =================***//

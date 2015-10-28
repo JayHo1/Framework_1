@@ -24,7 +24,7 @@
 	<header>
 		<nav class="ticket-navbar">
 			<ul>
-				<a href="/logout"><li>{{'TICKET_LOGOUT' | translate}}</li></a>
+				<a href="/logout"><li>{{'HOME_LOGOUT' | translate}}</li></a>
 				<a href="/home"><li>{{'TICKET_HOME' | translate}}</li></a>
 			</ul>
 		</nav>
@@ -57,7 +57,20 @@
 						</div>
 						<div class="message-content">
 							<p><%= topicReply.topicRep_message%></p>
-							<form id="<%= topicReply._id %>" method="POST" style="display: none;">
+							<hr />
+							<% if (sub) sub.forEach(function(sub) {%>
+								<% if (sub.topicRep_Id == topicReply._id ) { %>
+									<% for(var i = 0; sub.topicRep_sub[i]; i++) { %>
+										<div class="sub-reply-content">
+											<h4><%= sub.topicRep_sub[i].repSub_user%></h4>
+											<p><%= sub.topicRep_sub[i].repSub_content%> <span style="float: right;"><%= sub.topicRep_sub[i].repSub_date%></span></p>
+											<hr />
+										</div>
+									<% } %>
+								<% }%>
+							<% }); %>
+
+							<form id="<%= topicReply._id %>" class="jolie" method="POST" style="display: none;">
 								<input type="text" ng-model="message.rep[<%= ++i %>]" style="width: 300px;">
 								<input type="submit" ng-click="addRepSub('<%= topicReply._id %>', <%= i %>)" value="ok" style="display: none;">
 							</form>
